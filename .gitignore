@@ -1,0 +1,59 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# dependencies
+# Arquivos de configuração do VSCode
+.vscode
+# Arquivos de configuração do PyCharm
+.idea
+# If you are using sqlite3
+*.sqlite3
+# Byte-code Python
+*.pyc
+**/*.pyc
+**/__pycache__
+# Binaries
+*.exe
+*.bin
+# Logs
+*.log
+# Variáveis de ambiente
+env
+.env
+.env.dev
+.env.prod
+*.env
+
+# Pastas
+venv
+.venv
+/media
+media
+/staticfiles
+staticfiles
+.DS_Store
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+
+# data db container
+data
+/data
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+/credentials/google/*
