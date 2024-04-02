@@ -1,13 +1,21 @@
 from fastapi import FastAPI
 
+from src.infra.db.settings.connection import init_db
+from src.main.routes.songs import router as router_songs
+
+from src.infra.db.entities.songs import Song
+
 app = FastAPI()
 
 
 @app.get('/')
 def read_root():
-    return {'Hello': 'world'}
+    return {'ping': 'pong'}
 
 
-@app.get('/items/{item_id}')
-def read_item(item_id: int, q: str | None = None):
-    return {'item_id': item_id, 'q': q}
+@app.on_event('startup')
+def on_startup():
+    init_db()
+
+
+app.include_router(router_songs)
