@@ -7,13 +7,13 @@ app = FastAPI()
 
 
 @app.get('/')
-def read_root():
+async def read_root():
     return {'ping': 'pong'}
 
 
 @app.on_event('startup')
-def on_startup():
-    init_db()
+async def on_startup():
+    await init_db()
 
 
 app.include_router(router_songs)
