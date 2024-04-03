@@ -14,12 +14,12 @@ router = APIRouter()
 async def get_songs(session: AsyncSession = Depends(get_session)):
     result = await session.execute(select(Song))
     songs = result.scalars().all()
-    return [Song(name=song.name, artist=song.artist, id=song.id) for song in songs]
+    return [Song(name=song.name, artist=song.artist, id=song.id, year=song.year) for song in songs]
 
 
 @router.post('/songs', status_code=201, response_model=Song)
 async def create_song(song: SongCreate, session: AsyncSession = Depends(get_session)):
-    song = Song(name=song.name, artist=song.artist)
+    song = Song(name=song.name, artist=song.artist, year=song.year)
     session.add(song)
     await session.commit()
     await session.refresh(song)
