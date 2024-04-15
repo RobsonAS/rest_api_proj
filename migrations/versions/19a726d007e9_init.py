@@ -26,7 +26,6 @@ def upgrade() -> None:
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.PrimaryKeyConstraint('id')
                     )
-    pass
     # ### end Alembic commands ###
 
 
