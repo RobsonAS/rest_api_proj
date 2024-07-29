@@ -14,7 +14,10 @@ router = APIRouter()
 async def get_songs(session: AsyncSession = Depends(get_session)):
     result = await session.execute(select(Song))
     songs = result.scalars().all()
-    return [Song(name=song.name, artist=song.artist, id=song.id, year=song.year) for song in songs]
+    if songs:        
+        return [Song(name=song.name, artist=song.artist, id=song.id, year=song.year) for song in songs]
+    return []
+        
 
 
 @router.post('/songs', status_code=201, response_model=Song)
